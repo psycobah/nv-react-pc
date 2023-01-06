@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "./images/logoNV.png";
 
-const VistaWeb = ({poema}) => {
+const VistaWeb = ({data}) => {
 
   return (
     <div
@@ -19,7 +19,7 @@ const VistaWeb = ({poema}) => {
       />
 
       <p>Plan Alimentario</p>
-     
+      <h1> Plan de {data.nombre}</h1>
       <p
         style={{
           color: "gray",

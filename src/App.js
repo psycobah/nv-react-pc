@@ -3,9 +3,11 @@ import React from "react";
 import DocuPDF from "./DocuPDF";
 import Button from "react-bootstrap/Button";
 import VistaWeb from "./VistaWeb";
+import Formu from "./Formu";
 
 function App() {
   const [poema, setPoema] = React.useState("");
+  const [data, setData] = React.useState({})
   const [verWeb, setVerWeb] = React.useState(false);
   const [verPDF, setVerPDF] = React.useState(false);
   function fetchPoema() {
@@ -49,7 +51,7 @@ function App() {
         {verPDF ? "Ocultar PDF" : "Ver PDF"}
       </Button>
       <PDFDownloadLink
-        document={<DocuPDF poema={poema} />}
+        document={<DocuPDF data={data} />}
         fileName="poema.pdf"
       >
         <Button variant="info">Descargar PDF</Button>
@@ -62,14 +64,18 @@ function App() {
       <Menu />
       {poema ? (
         <>
-          {verWeb ? <VistaWeb poema={poema} /> : null}
+          {verWeb ? <VistaWeb data={data} /> : null}
           {verPDF ? (
             <PDFViewer style={{width: "100%", height: "90vh"}}>
-              <DocuPDF poema={poema} />
+              <DocuPDF data={data} />
             </PDFViewer>
           ) : null}
         </>
       ) : null}
+      {
+       ( !verWeb && !verPDF) && (
+        <Formu setData={setData} data={data} />
+       )}
     </div>
   );
 }

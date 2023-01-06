@@ -2,7 +2,7 @@ import React from "react";
 import {Document, Page, Text, View, Image} from "@react-pdf/renderer";
 import logo from "./images/logoNV.png";
 
-const DocuPDF = () => {
+const DocuPDF = ({data}) => {
   return (
     <Document>
       <Page
@@ -31,6 +31,7 @@ const DocuPDF = () => {
             style={{maxWidth: "600px", maxHeight: "400"}}
           />
           <Text>Plan Alimentario</Text>
+          <Text>{data.nombre}</Text>
           <Text
             style={{
               color: "gray",
